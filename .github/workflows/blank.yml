@@ -36,9 +36,11 @@ jobs:
           
       - name: build test
         run: |
+          cd build
           cmake ..
           make test_ci_tests
           
       - name: run test
         run: |
+          cd build
           ./test/test_ci_tests 
