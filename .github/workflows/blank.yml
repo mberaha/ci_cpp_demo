@@ -25,22 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: install
-        run: |
-          python3 -m pip install cmake
+      - name: build
+        run: docker 
           
       - name: create build
-        run: |
-          mkdir build
-          cd build
+        run: docker build -t test .
           
-      - name: build test
-        run: |
-          cd build
-          cmake ..
-          make test_ci_tests
-          
-      - name: run test
-        run: |
-          cd build
-          ./test/test_ci_tests 
+      - name: run
+        run: docker run test
